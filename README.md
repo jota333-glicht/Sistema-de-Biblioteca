@@ -24,3 +24,11 @@ Os dados são armazenados em livros.csv e recebem o status inicial "Disponível"
 Na opção 4 do menu, é possível listar todos os livros cadastrados.
 
 Na opção 5, você pode buscar livros por parte do título ou do autor, sem diferenciar letras maiúsculas e minúsculas.
+
+## Empréstimo e devolução
+
+Na opção 2, você pode registrar o empréstimo de um livro.
+
+Na opção 3, você pode registrar a devolução.
+
+Os livros podem ter os status "Disponível" ou "Emprestado".

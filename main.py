@@ -92,6 +92,49 @@ def buscar_livro():
         print("Status:", livro["status"])
 
 
+def alterar_status_livro(acao):
+    termo = input("Digite o título ou autor do livro: ").strip().lower()
+
+    if not termo:
+        print("Digite algo para localizar o livro.")
+        return
+
+    encontrado = None
+    for livro in livros:
+        titulo = livro["titulo"].lower()
+        autor = livro["autor"].lower()
+
+        if termo in titulo or termo in autor:
+            encontrado = livro
+            break
+
+    if encontrado is None:
+        print("Livro não encontrado.")
+        return
+
+    print("Livro encontrado:")
+    print("ISBN:", encontrado["isbn"])
+    print("Título:", encontrado["titulo"])
+    print("Autor:", encontrado["autor"])
+    print("Ano:", encontrado["ano"])
+    print("Status:", encontrado["status"])
+
+    if acao == "emprestar":
+        if encontrado["status"] == "Disponível":
+            encontrado["status"] = "Emprestado"
+            salvar_livros()
+            print("Empréstimo registrado.")
+        else:
+            print("Este livro já está emprestado.")
+    else:
+        if encontrado["status"] == "Emprestado":
+            encontrado["status"] = "Disponível"
+            salvar_livros()
+            print("Devolução registrada.")
+        else:
+            print("Este livro já está disponível.")
+
+
 carregar_livros()
 
 while True:
@@ -110,9 +153,9 @@ while True:
     if opcao == "1":
         cadastrar_livro()
     elif opcao == "2":
-        print("Funcionalidade ainda não implementada.")
+        alterar_status_livro("emprestar")
     elif opcao == "3":
-        print("Funcionalidade ainda não implementada.")
+        alterar_status_livro("devolver")
     elif opcao == "4":
         listar_livros()
     elif opcao == "5":
