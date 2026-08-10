@@ -1,3 +1,57 @@
+import csv
+
+livros = []
+
+
+def carregar_livros():
+    global livros
+    livros = []
+
+    with open("livros.csv", "r", encoding="utf-8", newline="") as arquivo:
+        leitor = csv.DictReader(arquivo)
+        for linha in leitor:
+            livros.append(
+                {
+                    "isbn": linha["isbn"],
+                    "titulo": linha["titulo"],
+                    "autor": linha["autor"],
+                    "ano": linha["ano"],
+                    "status": linha["status"],
+                }
+            )
+
+
+def salvar_livros():
+    with open("livros.csv", "w", encoding="utf-8", newline="") as arquivo:
+        campos = ["isbn", "titulo", "autor", "ano", "status"]
+        escritor = csv.DictWriter(arquivo, fieldnames=campos)
+        escritor.writeheader()
+
+        for livro in livros:
+            escritor.writerow(livro)
+
+
+def cadastrar_livro():
+    isbn = input("Digite o ISBN: ")
+    titulo = input("Digite o título: ")
+    autor = input("Digite o autor: ")
+    ano = input("Digite o ano de publicação: ")
+
+    livro = {
+        "isbn": isbn,
+        "titulo": titulo,
+        "autor": autor,
+        "ano": ano,
+        "status": "Disponível",
+    }
+
+    livros.append(livro)
+    salvar_livros()
+    print("Livro cadastrado com sucesso!")
+
+
+carregar_livros()
+
 while True:
     print("=" * 20)
     print("Sistema de Biblioteca")
@@ -12,7 +66,7 @@ while True:
     opcao = input("Escolha uma opção: ")
 
     if opcao == "1":
-        print("Funcionalidade ainda não implementada.")
+        cadastrar_livro()
     elif opcao == "2":
         print("Funcionalidade ainda não implementada.")
     elif opcao == "3":
