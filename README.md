@@ -2,41 +2,61 @@
 
 Projeto simples em Python para controlar o acervo físico de uma biblioteca.
 
+## Objetivo
+
+O sistema ajuda a controlar um acervo físico, registrando livros, seus dados e o status de empréstimo.
+
+## Arquivos do projeto
+
+- main.py: contém o programa principal em Python.
+- livros.csv: arquivo com os livros salvos em formato CSV.
+- README.md: documentação do projeto.
+
+## Requisitos
+
+É preciso ter Python instalado.
+
 ## Como executar
 
 ```bash
 python main.py
 ```
 
-## Cadastro de livros
+## Funcionalidades
 
-Na opção 1 do menu, você pode cadastrar um livro informando:
+- Cadastrar livro
+- Listar livros
+- Buscar por título ou autor
+- Registrar empréstimo
+- Registrar devolução
+- Ordenar por título, autor ou ano
+
+## Estrutura de um livro
+
+Cada livro possui:
 
 - ISBN
 - título
 - autor
-- ano de publicação
+- ano
+- status
 
-Os dados são armazenados em livros.csv e recebem o status inicial "Disponível".
+## Uso do CSV
 
-## Listagem e busca
+Os dados ficam salvos em livros.csv. Quando o programa abre, ele lê esse arquivo. Quando você cadastra, empresta ou devolve um livro, ele salva as alterações de volta no CSV.
 
-Na opção 4 do menu, é possível listar todos os livros cadastrados.
+## Status dos livros
 
-Na opção 5, você pode buscar livros por parte do título ou do autor, sem diferenciar letras maiúsculas e minúsculas.
+- Disponível: o livro pode ser emprestado.
+- Emprestado: o livro está fora da biblioteca.
 
-## Empréstimo e devolução
+## Conceitos de Python usados
 
-Na opção 2, você pode registrar o empréstimo de um livro.
+O programa usa:
 
-Na opção 3, você pode registrar a devolução.
-
-Os livros podem ter os status "Disponível" ou "Emprestado".
-
-## Ordenação
-
-Na opção 6 do menu, é possível ordenar a listagem por:
-
-- título
-- autor
-- ano de publicação
+- if, elif e else
+- while
+- listas
+- dicionários
+- funções
+- leitura e escrita de arquivo com o módulo csv

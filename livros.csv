@@ -5,3 +5,5 @@ isbn,titulo,autor,ano,status
 9785555555555,Zebra,Ana Silva,2005,Disponível
 9781111111111,Alice,Bruno Costa,1990,Disponível
 9783333333333,Cavalos,Diana Rocha,2020,Disponível
+1234567890,Livro A,Autor A,2020,Disponível
+2222222222,Livro D,Autor D,2022,Disponível

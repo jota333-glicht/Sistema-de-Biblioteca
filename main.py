@@ -32,10 +32,25 @@ def salvar_livros():
 
 
 def cadastrar_livro():
-    isbn = input("Digite o ISBN: ")
-    titulo = input("Digite o título: ")
-    autor = input("Digite o autor: ")
-    ano = input("Digite o ano de publicação: ")
+    isbn = input("Digite o ISBN: ").strip()
+    titulo = input("Digite o título: ").strip()
+    autor = input("Digite o autor: ").strip()
+    ano = input("Digite o ano de publicação: ").strip()
+
+    if not isbn or not titulo or not autor or not ano:
+        print("Preencha todos os campos.")
+        return
+
+    for livro in livros:
+        if livro["isbn"] == isbn:
+            print("ISBN já cadastrado.")
+            return
+
+    try:
+        int(ano)
+    except ValueError:
+        print("O ano deve ser numérico.")
+        return
 
     livro = {
         "isbn": isbn,
@@ -149,6 +164,10 @@ def ordenar_livros():
         livros_ordenados = sorted(livros, key=lambda livro: int(livro["ano"]))
     else:
         print("Opção inválida.")
+        return
+
+    if not livros:
+        print("Nenhum livro cadastrado.")
         return
 
     for livro in livros_ordenados:
