@@ -50,6 +50,48 @@ def cadastrar_livro():
     print("Livro cadastrado com sucesso!")
 
 
+def listar_livros():
+    if not livros:
+        print("Nenhum livro cadastrado.")
+        return
+
+    for livro in livros:
+        print("-" * 20)
+        print("ISBN:", livro["isbn"])
+        print("Título:", livro["titulo"])
+        print("Autor:", livro["autor"])
+        print("Ano:", livro["ano"])
+        print("Status:", livro["status"])
+
+
+def buscar_livro():
+    termo = input("Digite um título ou autor para buscar: ").strip().lower()
+
+    if not termo:
+        print("Digite algo para buscar.")
+        return
+
+    encontrados = []
+    for livro in livros:
+        titulo = livro["titulo"].lower()
+        autor = livro["autor"].lower()
+
+        if termo in titulo or termo in autor:
+            encontrados.append(livro)
+
+    if not encontrados:
+        print("Nenhum livro encontrado.")
+        return
+
+    for livro in encontrados:
+        print("-" * 20)
+        print("ISBN:", livro["isbn"])
+        print("Título:", livro["titulo"])
+        print("Autor:", livro["autor"])
+        print("Ano:", livro["ano"])
+        print("Status:", livro["status"])
+
+
 carregar_livros()
 
 while True:
@@ -72,9 +114,9 @@ while True:
     elif opcao == "3":
         print("Funcionalidade ainda não implementada.")
     elif opcao == "4":
-        print("Funcionalidade ainda não implementada.")
+        listar_livros()
     elif opcao == "5":
-        print("Funcionalidade ainda não implementada.")
+        buscar_livro()
     elif opcao == "6":
         print("Funcionalidade ainda não implementada.")
     elif opcao == "7":
