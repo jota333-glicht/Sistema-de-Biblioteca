@@ -135,6 +135,31 @@ def alterar_status_livro(acao):
             print("Este livro já está disponível.")
 
 
+def ordenar_livros():
+    print("1. Ordenar por título")
+    print("2. Ordenar por autor")
+    print("3. Ordenar por ano de publicação")
+    criterio = input("Escolha uma opção: ")
+
+    if criterio == "1":
+        livros_ordenados = sorted(livros, key=lambda livro: livro["titulo"].lower())
+    elif criterio == "2":
+        livros_ordenados = sorted(livros, key=lambda livro: livro["autor"].lower())
+    elif criterio == "3":
+        livros_ordenados = sorted(livros, key=lambda livro: int(livro["ano"]))
+    else:
+        print("Opção inválida.")
+        return
+
+    for livro in livros_ordenados:
+        print("-" * 20)
+        print("ISBN:", livro["isbn"])
+        print("Título:", livro["titulo"])
+        print("Autor:", livro["autor"])
+        print("Ano:", livro["ano"])
+        print("Status:", livro["status"])
+
+
 carregar_livros()
 
 while True:
@@ -161,7 +186,7 @@ while True:
     elif opcao == "5":
         buscar_livro()
     elif opcao == "6":
-        print("Funcionalidade ainda não implementada.")
+        ordenar_livros()
     elif opcao == "7":
         break
     else:

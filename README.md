@@ -32,3 +32,11 @@ Na opção 2, você pode registrar o empréstimo de um livro.
 Na opção 3, você pode registrar a devolução.
 
 Os livros podem ter os status "Disponível" ou "Emprestado".
+
+## Ordenação
+
+Na opção 6 do menu, é possível ordenar a listagem por:
+
+- título
+- autor
+- ano de publicação
